@@ -5,7 +5,7 @@
   Include:
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", 1, if params[:ratings]; params[:ratings].include?(rating); else true; end
+    = check_box_tag "ratings[#{rating}]", 1, if session[:current_ratings]; session[:current_ratings].include?(rating); else true; end
   = submit_tag 'Refresh', :class => 'btn btn-primary'
 
 %table#movies.table.table-striped.col-md-12
