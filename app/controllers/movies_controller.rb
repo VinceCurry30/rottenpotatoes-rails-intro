@@ -12,6 +12,9 @@ class MoviesController < ApplicationController
 
   def index
     #If we have new sorting/filtering settings, assign them into session[] first, then use session[] in following code.
+    if !params[:sort_by] and !params[:ratings] and !session[:current_sort_by] and !session[:current_ratings]
+      @movies = Movie.all
+    end
     if params[:sort_by]
       session[:current_sort_by] = params[:sort_by]
     end
